@@ -11,6 +11,8 @@ public class Leitura {
 
     private final String arquivo;
     private Grafo grafo;
+    private int caminhoMaximo;
+    private long tempo;
 
     public Leitura (String arquivo) {this.arquivo = arquivo;}
 
@@ -35,19 +37,22 @@ public class Leitura {
             IntStream.range(i + 1, caixas.size()).forEach(j -> {
                 if (caixas.get(i).cabeDentro(caixas.get(j))) 
                 grafo.adicionarAresta(caixas.get(i).getId(), caixas.get(j).getId());}));
+
         } catch(Exception e) {}
     }
 
-    public int getCaminhoMaximo() {lerCaminhoMaximo();return new BuscaEmProfundidade(grafo).encontrarCaminhoMaisLongo();}
-
-    public long getTempo() {
+    private void calculaResultado() {
         long startTime = System.currentTimeMillis();
-        getCaminhoMaximo();
+        lerCaminhoMaximo();
+        caminhoMaximo = new BuscaEmProfundidade(grafo).encontrarCaminhoMaisLongo();
         long endTime = System.currentTimeMillis();
-        return endTime - startTime;
+        tempo = endTime - startTime;
     }
 
     @Override
-    public String toString() {return "Caminho mais longo para " + arquivo.split("_")[1].split(Pattern.quote("."))[0] + " caixas: " +getCaminhoMaximo() + "\nTempo: " + getTempo() + " ms";}
+    public String toString() {
+        calculaResultado(); 
+        return "Caminho mais longo para " + arquivo.split("_")[1].split(Pattern.quote("."))[0] + " caixas: " + caminhoMaximo + "\nTempo: " + tempo + "ms";
+    }
 
 }
