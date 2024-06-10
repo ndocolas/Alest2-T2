@@ -9,14 +9,13 @@ import java.util.stream.IntStream;
 
 public class Leitura {
 
-    private String arquivo;
+    private final String arquivo;
     private Grafo grafo;
 
     public Leitura (String arquivo) {this.arquivo = arquivo;}
 
     private void lerCaminhoMaximo() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(arquivo));
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             int id = 0;
 

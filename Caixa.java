@@ -4,8 +4,8 @@ import java.util.stream.IntStream;
 
 public class Caixa implements Comparable<Caixa> {
     
-    private int id;
-    private int[] dimensoes;
+    private final int id;
+    private final int[] dimensoes;
 
     public Caixa(int id, int[] dimensoes) {
         this.id = id;

@@ -3,7 +3,7 @@ import java.util.stream.IntStream;
 
 public class BuscaEmProfundidade {
 
-    private Grafo grafo;
+    private final Grafo grafo;
 
     public BuscaEmProfundidade(Grafo grafo) {this.grafo = grafo;}
 
@@ -20,7 +20,7 @@ public class BuscaEmProfundidade {
     private int buscaEmProfundidade(Grafo grafo, int v, int[] dp) {
         if (dp[v] != -1) return dp[v];
 
-        int comprimentoMax = 1;
+        int comprimentoMax;
         comprimentoMax = 1 + grafo.adjacentes(v).stream()
                                   .mapToInt(vizinho -> buscaEmProfundidade(grafo, vizinho, dp))
                                   .max()

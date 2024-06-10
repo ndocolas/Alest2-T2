@@ -3,7 +3,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Grafo {
-    private int nVertices;
+
+    private final int nVertices;
     private ArrayList<Integer>[] listaAdjacencia;
 
     @SuppressWarnings("unchecked")
