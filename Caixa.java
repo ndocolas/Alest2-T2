@@ -15,9 +15,9 @@ public class Caixa implements Comparable<Caixa> {
 
     @Override
     public int compareTo(Caixa outra) {
-        Comparator<Caixa> comparator = Comparator.comparingInt(
+        Comparator<Caixa> comparador = Comparator.comparingInt(
             caixa -> Arrays.compare(caixa.dimensoes, outra.dimensoes));
-        return comparator.compare(this, outra);
+        return comparador.compare(this, outra);
     }
 
     public boolean cabeDentro(Caixa outra) {
