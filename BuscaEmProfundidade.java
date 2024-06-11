@@ -29,5 +29,4 @@ public class BuscaEmProfundidade {
         lista[v] = comprimentoMax;
         return comprimentoMax;
     }
-    
 }
