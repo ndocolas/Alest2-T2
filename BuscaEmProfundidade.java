@@ -8,25 +8,25 @@ public class BuscaEmProfundidade {
     public BuscaEmProfundidade(Grafo grafo) {this.grafo = grafo;}
 
     public int encontrarCaminhoMaisLongo() {
-        int[] lista = new int[grafo.getNumVertices()];
-        Arrays.fill(lista, -1);
+        int[] dp = new int[grafo.getNumVertices()];
+        Arrays.fill(dp, -1);
 
         return IntStream.range(0, grafo.getNumVertices())
-                        .map(i -> buscaEmProfundidade(this.grafo, i, lista))
+                        .map(i -> buscaEmProfundidade(this.grafo, i, dp))
                         .max()
                         .orElse(0);
     }
 
-    private int buscaEmProfundidade(Grafo grafo, int v, int[] lista) {
-        if (lista[v] != -1) return lista[v];
+    private int buscaEmProfundidade(Grafo grafo, int v, int[] dp) {
+        if (dp[v] != -1) return dp[v];
 
         int comprimentoMax;
         comprimentoMax = 1 + grafo.adjacentes(v).stream()
-                                  .mapToInt(vizinho -> buscaEmProfundidade(grafo, vizinho, lista))
+                                  .mapToInt(vizinho -> buscaEmProfundidade(grafo, vizinho, dp))
                                   .max()
                                   .orElse(0);
 
-        lista[v] = comprimentoMax;
+        dp[v] = comprimentoMax;
         return comprimentoMax;
     }
     
