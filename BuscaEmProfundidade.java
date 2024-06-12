@@ -3,26 +3,26 @@ import java.util.stream.IntStream;
 
 public class BuscaEmProfundidade {
 
-    private final Grafo grafo;
+    private final Digrafo digrafo;
 
-    public BuscaEmProfundidade(Grafo grafo) {this.grafo = grafo;}
+    public BuscaEmProfundidade(Digrafo digrafo) {this.digrafo = digrafo;}
 
     public int encontrarCaminhoMaisLongo() {
-        int[] lista = new int[grafo.getNumVertices()];
+        int[] lista = new int[digrafo.getNumVertices()];
         Arrays.fill(lista, -1);
 
-        return IntStream.range(0, grafo.getNumVertices())
-                        .map(i -> buscaEmProfundidade(this.grafo, i, lista))
+        return IntStream.range(0, digrafo.getNumVertices())
+                        .map(i -> buscaEmProfundidade(this.digrafo, i, lista))
                         .max()
                         .orElse(0);
     }
 
-    private int buscaEmProfundidade(Grafo grafo, int v, int[] lista) {
+    private int buscaEmProfundidade(Digrafo digrafo, int v, int[] lista) {
         if (lista[v] != -1) return lista[v];
 
         int comprimentoMax;
-        comprimentoMax = 1 + grafo.adjacentes(v).stream()
-                                  .mapToInt(vizinho -> buscaEmProfundidade(grafo, vizinho, lista))
+        comprimentoMax = 1 + digrafo.adjacentes(v).stream()
+                                  .mapToInt(vizinho -> buscaEmProfundidade(digrafo, vizinho, lista))
                                   .max()
                                   .orElse(0);
 

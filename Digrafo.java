@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Grafo {
+public class Digrafo {
 
     private final int nVertices;
     private ArrayList<Integer>[] listaAdjacencia;
 
     @SuppressWarnings("unchecked")
-    public Grafo(int nVertices) {
+    public Digrafo(int nVertices) {
         this.nVertices = nVertices;
         listaAdjacencia = new ArrayList[nVertices];
         IntStream.range(0, nVertices).forEach(i -> listaAdjacencia[i] = new ArrayList<>());

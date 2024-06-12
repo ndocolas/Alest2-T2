@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class Leitura {
 
     private final String arquivo;
-    private Grafo grafo;
+    private Digrafo digrafo;
     private int caminhoMaximo;
     private long tempo;
 
@@ -23,7 +23,7 @@ public class Leitura {
 
             List<Caixa> caixas = new ArrayList<>();
 
-            grafo = new Grafo(Integer.parseInt(br.readLine()));
+            digrafo = new Digrafo(Integer.parseInt(br.readLine()));
 
             while((linha = br.readLine()) != null) {
             caixas.add(new Caixa(id++, Arrays.stream(linha.split(" ")).mapToInt(Integer::parseInt).toArray()));
@@ -36,7 +36,7 @@ public class Leitura {
             IntStream.range(0, caixas.size()).forEach(i ->
             IntStream.range(i + 1, caixas.size()).forEach(j -> {
                 if (caixas.get(i).cabeDentro(caixas.get(j))) 
-                grafo.adicionarAresta(caixas.get(i).getId(), caixas.get(j).getId());}));
+                digrafo.adicionarAresta(caixas.get(i).getId(), caixas.get(j).getId());}));
 
         } catch(Exception e) {}
     }
@@ -44,7 +44,7 @@ public class Leitura {
     private void calculaResultado() {
         long startTime = System.currentTimeMillis();
         lerCaminhoMaximo();
-        caminhoMaximo = new BuscaEmProfundidade(grafo).encontrarCaminhoMaisLongo();
+        caminhoMaximo = new BuscaEmProfundidade(digrafo).encontrarCaminhoMaisLongo();
         long endTime = System.currentTimeMillis();
         tempo = endTime - startTime;
     }
