@@ -1,27 +1,27 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
-        String dir = "./arquivos/";
-        String[] ler = {
-            dir + "caixas_5" + ".txt",
-            dir + "caixas_11" + ".txt",
-            dir + "caixas_12" + ".txt",
-            dir + "caixas_15" + ".txt",
-            dir + "tamanho_10" + ".txt",
-            dir + "tamanho_20" + ".txt",
-            dir + "tamanho_50" + ".txt",
-            dir + "tamanho_100" + ".txt",
-            dir + "tamanho_200" + ".txt",
-            dir + "tamanho_300" + ".txt",
-            dir + "tamanho_1000" + ".txt",
-            dir + "caixas_1005" + ".txt",
-            dir + "tamanho_2000" + ".txt",
-            dir + "tamanho_10000" + ".txt"
-        };
+        List<String> lista = Arrays.asList(
+                "caixas_5",
+                 "caixas_11",
+                 "caixas_12",
+                 "caixas_15",
+                 "tamanho_10",
+                 "tamanho_20",
+                 "tamanho_50",
+                 "tamanho_100",
+                 "tamanho_300",
+                 "tamanho_200",
+                 "tamanho_1000",
+                 "caixas_1005",
+                 "tamanho_2000",
+                 "tamanho_10000");
 
-        for (String str : ler) {
-            System.out.println(new Leitura(str));
-        }
+        lista.stream().map(str -> "./arquivos/" + str + ".txt")
+        .forEach(arq -> System.out.println(new Leitura(arq)));
     }
     
 }
