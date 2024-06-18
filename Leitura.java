@@ -15,7 +15,6 @@ public class Leitura {
     private final String arquivo;
     private Digrafo digrafo;
     private int caminhoMaximo;
-    private long tempo;
 
     public Leitura (String arquivo) {this.arquivo = arquivo;}
 
@@ -29,7 +28,7 @@ public class Leitura {
                             .mapToInt(Integer::parseInt)
                             .toArray()))
                     .collect(Collectors.toList());
-                    
+
             br.close();
             
             Collections.sort(caixas);
@@ -39,22 +38,16 @@ public class Leitura {
                 if (caixas.get(i).cabeDentro(caixas.get(j))) 
                 digrafo.adicionarAresta(caixas.get(i).getId(), caixas.get(j).getId());}));
 
-        } catch(Exception e) {}
-    }
+            caminhoMaximo = new BuscaEmProfundidade(digrafo).encontrarCaminhoMaisLongo();
 
-    private void calculaResultado() {
-        long startTime = System.currentTimeMillis();
-        lerCaminhoMaximo();
-        caminhoMaximo = new BuscaEmProfundidade(digrafo).encontrarCaminhoMaisLongo();
-        long endTime = System.currentTimeMillis();
-        tempo = endTime - startTime;
+        } catch(Exception e) {}
     }
 
     @Override
     public String toString() {
-        calculaResultado(); 
+        lerCaminhoMaximo();
         return "Caminho mais longo para " + NumberFormat.getNumberInstance(Locale.of("pt", "BR")).
-        format(Integer.parseInt(arquivo.split("_")[1].split(Pattern.quote("."))[0])) + " caixas: " + caminhoMaximo + "\nTempo: " + tempo + "ms";
+        format(Integer.parseInt(arquivo.split("_")[1].split(Pattern.quote("."))[0])) + " caixas: " + caminhoMaximo;
     }
 
 }
