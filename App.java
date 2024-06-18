@@ -1,13 +1,25 @@
-public class App {
+public class App{
 
     public static void main(String[] args) {
         String dir = "./arquivos/";
-        System.out.println(new Leitura(dir + "tamanho_10.txt"));
-        System.out.println(new Leitura(dir + "tamanho_50.txt"));
-        System.out.println(new Leitura(dir + "tamanho_100.txt"));
-        System.out.println(new Leitura(dir + "tamanho_798.txt"));
-        System.out.println(new Leitura(dir + "tamanho_1000.txt"));
-        System.out.println(new Leitura(dir + "tamanho_5000.txt"));
-        System.out.println(new Leitura(dir + "tamanho_10000.txt"));
+        String[] leitura = {
+        dir + "caixas_5.txt",
+        dir + "caixas_11.txt",
+        dir + "caixas_12.txt",
+        dir + "caixas_15.txt",
+        dir + "tamanho_10.txt", 
+        dir + "tamanho_20.txt",
+        dir + "tamanho_50.txt",
+        dir + "tamanho_100.txt",
+        dir + "tamanho_200.txt",
+        dir + "tamanho_300.txt",
+        dir + "tamanho_1000.txt",
+        dir + "caixas_1005.txt",
+        dir + "tamanho_2000.txt",
+        dir + "tamanho_10000.txt",};
+
+        for (String str : leitura) {
+            System.out.println(new Leitura(str));
+        }
     }
 }
