@@ -22,9 +22,9 @@ public class Leitura {
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             digrafo = new Digrafo(Integer.parseInt(br.readLine()));
 
-            AtomicInteger idCounter = new AtomicInteger(0);
+            AtomicInteger id = new AtomicInteger(0);
             List<Caixa> caixas = br.lines()
-                    .map(line -> new Caixa(idCounter.getAndIncrement(), Arrays.stream(line.split(" "))
+                    .map(linhas -> new Caixa(id.getAndIncrement(), Arrays.stream(linhas.split(" "))
                             .mapToInt(Integer::parseInt)
                             .toArray()))
                     .collect(Collectors.toList());
