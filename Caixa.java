@@ -9,7 +9,6 @@ public class Caixa implements Comparable<Caixa> {
 
     public Caixa(int id, int[] dimensoes) {
         this.id = id;
-        Arrays.sort(dimensoes);
         this.dimensoes = dimensoes;
     }
 
@@ -21,8 +20,7 @@ public class Caixa implements Comparable<Caixa> {
     }
 
     public boolean cabeDentro(Caixa outra) {
-        return IntStream.range(0, 3).
-            allMatch(i -> this.dimensoes[i] < outra.dimensoes[i]);
+        return IntStream.range(0, 3).allMatch(i -> this.dimensoes[i] < outra.dimensoes[i]);
     }
 
     public int getId() {return id;}
