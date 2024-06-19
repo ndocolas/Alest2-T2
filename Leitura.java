@@ -25,8 +25,8 @@ public class Leitura {
             AtomicInteger id = new AtomicInteger(0);
             List<Caixa> caixas = br.lines()
                     .map(linhas -> new Caixa(id.getAndIncrement(), Arrays.stream(linhas.split(" "))
-                            .mapToInt(Integer::parseInt)
-                            .toArray()))
+                    .mapToInt(Integer::parseInt)
+                    .toArray()))
                     .collect(Collectors.toList());
 
             br.close();
@@ -49,5 +49,4 @@ public class Leitura {
         return "Caminho mais longo para " + NumberFormat.getNumberInstance(Locale.of("pt", "BR")).
         format(Integer.parseInt(arquivo.split("_")[1].split(Pattern.quote("."))[0])) + " caixas: " + caminhoMaximo;
     }
-
 }
