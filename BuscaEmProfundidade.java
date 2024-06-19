@@ -20,13 +20,10 @@ public class BuscaEmProfundidade {
     private int buscaEmProfundidade(Digrafo digrafo, int v, int[] lista) {
         if (lista[v] != -1) return lista[v];
 
-        int comprimentoMax;
-        comprimentoMax = 1 + digrafo.adjacentes(v).stream()
+        lista[v] = 1 + digrafo.adjacentes(v).stream()
                                   .mapToInt(vizinho -> buscaEmProfundidade(digrafo, vizinho, lista))
                                   .max()
                                   .orElse(0);
-
-        lista[v] = comprimentoMax;
-        return comprimentoMax;
+        return lista[v];
     }
 }
