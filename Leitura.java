@@ -46,7 +46,7 @@ public class Leitura {
     @Override
     public String toString() {
         lerCaminhoMaximo();
-        return "Caminho mais longo para " + NumberFormat.getNumberInstance(Locale.of("pt", "BR")).
-        format(Integer.parseInt(arquivo.split("_")[1].split(Pattern.quote("."))[0])) + " caixas: " + caminhoMaximo;
+        return String.format("Caminho mais longo para %s caixas: %d", NumberFormat.getNumberInstance(Locale.of("pt", "BR")).
+        format(Integer.parseInt(arquivo.split("_")[1].split(Pattern.quote("."))[0])), caminhoMaximo);
     }
 }
