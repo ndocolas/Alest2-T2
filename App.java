@@ -1,10 +1,9 @@
 import java.util.Arrays;
-import java.util.List;
 
 public class App {
 
     public static void main(String[] args) {
-        List<String> lista = Arrays.asList(
+        Arrays.asList(
                 "caixas_5",
                  "caixas_11",
                  "caixas_12",
@@ -18,10 +17,10 @@ public class App {
                  "tamanho_1000",
                  "caixas_1005",
                  "tamanho_2000",
-                 "tamanho_10000");
+                 "tamanho_10000")
 
-        lista.stream().map(str -> "./arquivos/" + str + ".txt")
-        .forEach(arq -> System.out.println(new Leitura(arq)));
+		    .stream().map(str -> "./arquivos/" + str + ".txt")
+        	.forEach(arq -> System.out.println(new Leitura(arq)));
     }
     
 }
