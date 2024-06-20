@@ -1,5 +1,4 @@
 public class App {
-
     public static void main(String[] args) {
         java.util.Arrays.asList(
                 "caixas_5",
@@ -20,5 +19,4 @@ public class App {
 		    .stream().map(str -> "./arquivos/" + str + ".txt")
         	.forEach(arq -> System.out.println(new Leitura(arq)));
     }
-    
 }
