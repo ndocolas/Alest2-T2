@@ -24,9 +24,7 @@ public class Leitura {
 
             AtomicInteger id = new AtomicInteger(0);
             List<Caixa> caixas = br.lines()
-                    .map(linhas -> new Caixa(id.getAndIncrement(), Arrays.stream(linhas.split(" "))
-                    .mapToInt(Integer::parseInt).sorted()
-                    .toArray()))
+                    .map(linhas -> new Caixa(id.getAndIncrement(), Arrays.stream(linhas.split(" ")).mapToInt(Integer::parseInt).sorted().toArray()))
                     .collect(Collectors.toList());
 
             br.close();
