@@ -28,7 +28,8 @@ public class Leitura {
                 .flatMap(i -> IntStream.range(i + 1, caixas.size())
                 .filter(j -> caixas.get(i).cabeDentro(caixas.get(j)))
                 .mapToObj(j -> new int[]{i, j}))
-                .forEach(pair -> digrafo.adicionarAresta(caixas.get(pair[0]).getId(), caixas.get(pair[1]).getId()));
+                .forEach(pair -> digrafo.adicionarAresta(caixas.get(pair[0]).id(), caixas.get(pair[1]).id()));
+                
         } catch(Exception _) {}
     }
 
