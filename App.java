@@ -15,7 +15,6 @@ public class App {
                 "caixas_1005",
                 "tamanho_2000",
                 "tamanho_10000")
-		.stream().map(str -> "./arquivos/" + str + ".txt")
-        .forEach(arq -> System.out.println(new Leitura(arq)));
+		.stream().map(str -> "./arquivos/" + str + ".txt").forEach(arq -> System.out.println(new Leitura(arq)));
     }
 }
