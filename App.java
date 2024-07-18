@@ -1,5 +1,5 @@
 public class App {
-    public static void main(String[] args) {
+    void main() {
         java.util.Arrays.asList(
                 "caixas_5",
                 "caixas_11",
